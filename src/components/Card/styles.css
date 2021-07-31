@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #A9BCD0;
+  height: 100%;
+  width: 300px;
+  margin-top: 50px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  padding: 15px;
+}
+
+.container input {
+  height: 25px;
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+
+.container label {
+  font-size: 12px;
+}
