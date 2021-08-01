@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: #e0e2db;
+  color: #191716;
   font-size: 3rem;
   font-weight: bold;
 

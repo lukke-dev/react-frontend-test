@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import 'react-toastify/dist/ReactToastify.css';
 
 const GlobalStyles = createGlobalStyle`
 * {
@@ -8,27 +9,31 @@ const GlobalStyles = createGlobalStyle`
 }
 html {
   font-size: 62.5%;
-  background-color: #373F51;
+  background-color: #E0E2DB;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-button {
-  margin-top: 15px;
-  cursor: pointer;
-  background: #1B1B1E;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  color: #fff;
-  font-weight: bold;
-  transition: all 300ms;
-}
-button:hover {
-  background: #373F51;
-}
+  body .Toastify .Toastify__toast-container .Toastify__toast--success{
+    background: #3D348B;
+    font-size: 1.7rem;
+    color: #E0E2DB;
+  }
+  body .Toastify .Toastify__toast-container .Toastify__toast--dark {
+    font-size: 1.7rem;
+    color: #E0E2DB;
+  }
+  body .Toastify .Toastify__toast-container .Toastify__toast--info {
+    font-size: 1.7rem;
+    color: #E0E2DB;
+  }
+  body .Toastify .Toastify__toast-container .Toastify__toast--error{
+    background: #C3073F;
+    font-size: 1.7rem;
+    color: #E0E2DB;
+  }
 `;
 
 export default GlobalStyles;

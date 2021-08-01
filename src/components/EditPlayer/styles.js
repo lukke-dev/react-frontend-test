@@ -23,13 +23,13 @@ export const Wrapper = styled.div`
     text-align: center;
     width: 300px;
     border: none;
-    border-bottom: 1px solid #c3073f;
+    border-bottom: 1px solid #e6af2e;
   }
 
   button {
     margin-top: 30px;
     cursor: pointer;
-    background: #c3073f;
+    background: #e6af2e;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
