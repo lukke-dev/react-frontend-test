@@ -36,6 +36,7 @@ const ListTransfers = () => {
             <th>Origem</th>
             <th>Destino</th>
             <th>Valor</th>
+            <th>Data</th>
             <th>Deletar</th>
           </tr>
         </thead>
@@ -46,6 +47,7 @@ const ListTransfers = () => {
               <td>{value.origin}</td>
               <td>{value.destination}</td>
               <td>{value.value}</td>
+              <td>{new Date(value.date).toLocaleString()}</td>
               <td>
                 <Link
                   to="/listTransfers/"

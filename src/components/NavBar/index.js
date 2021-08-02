@@ -1,37 +1,29 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FaSearch } from 'react-icons/fa';
 import { useState } from 'react';
-import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import * as S from './styles';
 import Loading from '../Loading';
 import { getByName } from '../../services/api';
 
 const NavBar = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [value, setValue] = useState('');
   const history = useHistory();
-  let value = '';
 
-  const handleChange = (e) => {
-    value = e.target.value;
-  };
   const searchByName = async () => {
     setIsLoading(true);
     const resp = await getByName(`/${value}`);
-    if (!resp) {
+    if (!resp.data) {
       setIsLoading(false);
-      return toast.error('Jogador não Existe');
+      return toast.error('Jogador não existe');
     }
-    if (resp.data !== undefined) {
-      setIsLoading(false);
-      return history.push(`./${resp.data.playerName}`);
-    }
-    return resp;
+    setIsLoading(false);
+    return history.push(`/listone/${resp.data.playerName}`);
   };
 
-  document.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') searchByName();
-  });
   return (
     <S.Wrapper>
       {isLoading && <Loading />}
@@ -50,7 +42,7 @@ const NavBar = () => {
       <S.Link to="/listtransfers" exact>
         Transferências
       </S.Link>
-      <S.Search type="search" onChange={(e) => handleChange(e)} />
+      <S.Search type="search" onChange={(e) => setValue(e.target.value)} />
       <S.BtnSearch onClick={() => searchByName()}>
         <FaSearch size={16} color="#E0E2DB" />
       </S.BtnSearch>

@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint no-underscore-dangle: 0 */
+/* eslint-disable */
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import {
@@ -11,26 +10,30 @@ import {
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import * as S from './styles';
 import Loading from '../Loading';
-import { getPlayersByQuery, deletePlayer } from '../../services/api';
+import { getPlayersByQuery, deletePlayer, getPlayers } from '../../services/api';
 
 const ListPlayers = () => {
   const [listPlayers, setListPlayers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [next, setNext] = useState(1)
+  const [previous, setPrevious] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
   const query = useLocation();
   const history = useHistory();
-  const playersPerPage = 3;
-  const pagesVisited = pageNumber * playersPerPage;
-
+  const limit = 3;
+  let page = 1;
   useEffect(() => {
     const players = async () => {
+      page = query.search.slice(6, 7);
       const resp = await getPlayersByQuery(query.search);
       setListPlayers(resp.data);
       setIsLoading(false);
+      if(page > 1)setPrevious(Number(page) - 1)
+      if(resp.data.length === limit)setNext(Number(page) + 1)
     };
 
     players();
-  }, [query]);
+  }, [query,setListPlayers, page, setNext, setPrevious, setTotalPages]);
 
   const handleDelete = async (id) => {
     setIsLoading(true);
@@ -38,8 +41,6 @@ const ListPlayers = () => {
     toast.dark('Jogador deletado!');
     history.push('./');
   };
-
-  const pageCount = Math.ceil(listPlayers.length / playersPerPage);
   return (
     <S.Wrapper>
       {isLoading && <Loading />}
@@ -79,10 +80,10 @@ const ListPlayers = () => {
       </S.Table>
       {listPlayers.length > 0 && (
         <S.BtnPage>
-          <Link to={`./listplayers/?page=${pageNumber}&limit=3`}>
+          <Link to={`/listplayers/?page=${previous}&limit=${limit}`}>
             <FaRegArrowAltCircleLeft size={36} color="#191716" />
           </Link>
-          <Link to={`./listplayers/?page=${pageNumber}&limit=3`}>
+          <Link to={`/listplayers/?page=${next}&limit=${limit}`}>
             <FaRegArrowAltCircleRight size={36} color="#191716" />
           </Link>
         </S.BtnPage>

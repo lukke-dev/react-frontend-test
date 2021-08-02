@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/" component={NewPlayer} />
         <Route exact path="/edit/:id" component={EditPlayer} />
         <Route exact path="/listplayers/:page?" component={ListPlayers} />
-        <Route exact path="/:name" component={ListOnePlayer} />
+        <Route exact path="/listone/:name" component={ListOnePlayer} />
         <Route exact path="/newtransfer" component={NewTransfer} />
         <Route exact path="/listtransfers" component={ListTransfers} />
         <Route component={Page404} />
