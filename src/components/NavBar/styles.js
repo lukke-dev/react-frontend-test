@@ -8,7 +8,7 @@ export const Wrapper = styled.nav`
   height: 50px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
 `;
 
 export const Link = styled(NavLink)`
@@ -17,9 +17,37 @@ export const Link = styled(NavLink)`
   color: #beb7a4;
   text-decoration: none;
   margin: 0 20px;
+
+  &:hover {
+    color: #e0e2db;
+  }
 `;
 
 export const Bar = styled.h2`
   color: #beb7a4;
   opacity: 0.3;
+`;
+
+export const Search = styled.input`
+  height: 30px;
+  width: 200px;
+  font-size: 20px;
+  background-color: #191716;
+  border: 3px solid #beb7a4;
+  border-radius: 5px;
+  color: #e0e2db;
+  transition: all ease-in-out 0.7s;
+  &:hover {
+    border: 3px solid #e0e2db;
+  }
+
+  &:focus {
+    width: 400px;
+  }
+`;
+
+export const BtnSearch = styled.button`
+  cursor: pointer;
+  background-color: #191716;
+  border: none;
 `;

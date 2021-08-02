@@ -9,8 +9,13 @@ export const getPlayers = async (id) => {
   return Axios.get(`${baseUrl}/`);
 };
 
+export const getPlayersByQuery = async (query) => {
+  if (!query) return Axios.get(`${baseUrl}/?page=1&limit=3`);
+  return Axios.get(`${baseUrl}/${query}`);
+};
+
 export const getByName = async (playerName) =>
-  Axios.get(`${baseUrl}/name/${playerName}`);
+  Axios.get(`${baseUrl}/name${playerName}`);
 
 export const addPlayer = async (player) => {
   try {

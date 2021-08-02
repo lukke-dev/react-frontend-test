@@ -7,6 +7,7 @@ import EditPlayer from './components/EditPlayer';
 import ListPlayers from './components/ListPlayers';
 import NewTransfer from './components/NewTransfer';
 import ListTransfers from './components/ListTransfers';
+import ListOnePlayer from './components/ListOnePlayer';
 import Page404 from './components/Page404';
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={NewPlayer} />
         <Route exact path="/edit/:id" component={EditPlayer} />
-        <Route exact path="/listplayers" component={ListPlayers} />
+        <Route exact path="/listplayers/:page?" component={ListPlayers} />
+        <Route exact path="/:name" component={ListOnePlayer} />
         <Route exact path="/newtransfer" component={NewTransfer} />
         <Route exact path="/listtransfers" component={ListTransfers} />
         <Route component={Page404} />

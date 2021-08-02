@@ -1,36 +1,36 @@
-/* eslint-disable no-unused-vars */
 /* eslint no-underscore-dangle: 0 */
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import {
-  FaWindowClose,
-  FaEdit,
-  FaRegArrowAltCircleRight,
-  FaRegArrowAltCircleLeft,
-} from 'react-icons/fa';
+import { FaWindowClose, FaEdit } from 'react-icons/fa';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import * as S from './styles';
 import Loading from '../Loading';
-import { getPlayersByQuery, deletePlayer } from '../../services/api';
+import { deletePlayer, getByName } from '../../services/api';
 
-const ListPlayers = () => {
-  const [listPlayers, setListPlayers] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [pageNumber, setPageNumber] = useState(1);
-  const query = useLocation();
+const ListOnePlayer = () => {
+  const name = useLocation();
   const history = useHistory();
-  const playersPerPage = 3;
-  const pagesVisited = pageNumber * playersPerPage;
+  const [player, setPlayer] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const players = async () => {
-      const resp = await getPlayersByQuery(query.search);
-      setListPlayers(resp.data);
+      const resp = await getByName(name.pathname);
+      if (resp.data.playerName) {
+        setPlayer(resp.data);
+      }
       setIsLoading(false);
     };
 
     players();
-  }, [query]);
+  });
+  const players = async () => {
+    const resp = await getByName(name.pathname);
+    setPlayer(resp.data);
+    setIsLoading(false);
+  };
+
+  players();
 
   const handleDelete = async (id) => {
     setIsLoading(true);
@@ -39,7 +39,6 @@ const ListPlayers = () => {
     history.push('./');
   };
 
-  const pageCount = Math.ceil(listPlayers.length / playersPerPage);
   return (
     <S.Wrapper>
       {isLoading && <Loading />}
@@ -53,8 +52,8 @@ const ListPlayers = () => {
           </tr>
         </thead>
         <tbody>
-          {listPlayers.map((player) => (
-            <tr key={player._id}>
+          {player && (
+            <tr>
               <td>{player._id}</td>
               <td>{player.playerName}</td>
               <td>{player.playerCoins}</td>
@@ -74,20 +73,10 @@ const ListPlayers = () => {
                 </Link>
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </S.Table>
-      {listPlayers.length > 0 && (
-        <S.BtnPage>
-          <Link to={`./listplayers/?page=${pageNumber}&limit=3`}>
-            <FaRegArrowAltCircleLeft size={36} color="#191716" />
-          </Link>
-          <Link to={`./listplayers/?page=${pageNumber}&limit=3`}>
-            <FaRegArrowAltCircleRight size={36} color="#191716" />
-          </Link>
-        </S.BtnPage>
-      )}
     </S.Wrapper>
   );
 };
-export default ListPlayers;
+export default ListOnePlayer;
