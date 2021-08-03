@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import {
@@ -10,30 +9,44 @@ import {
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import * as S from './styles';
 import Loading from '../Loading';
-import { getPlayersByQuery, deletePlayer, getPlayers } from '../../services/api';
+import {
+  getPlayersByQuery,
+  deletePlayer,
+  getPlayers,
+} from '../../services/api';
 
 const ListPlayers = () => {
   const [listPlayers, setListPlayers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [next, setNext] = useState(1)
-  const [previous, setPrevious] = useState(1)
-  const [totalPages, setTotalPages] = useState(1)
+  const [next, setNext] = useState(1);
+  const [previous, setPrevious] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totPages, setTotPages] = useState(1);
   const query = useLocation();
   const history = useHistory();
   const limit = 3;
-  let page = 1;
   useEffect(() => {
     const players = async () => {
-      page = query.search.slice(6, 7);
+      setCurrentPage(query.search.slice(6, 7));
       const resp = await getPlayersByQuery(query.search);
+      const totItems = await getPlayers();
+      setTotPages(Math.ceil(totItems.data.length / limit));
       setListPlayers(resp.data);
       setIsLoading(false);
-      if(page > 1)setPrevious(Number(page) - 1)
-      if(resp.data.length === limit)setNext(Number(page) + 1)
+      if (currentPage > 1) setPrevious(Number(currentPage) - 1);
+      if (currentPage < totPages) setNext(Number(currentPage) + 1);
     };
 
     players();
-  }, [query,setListPlayers, page, setNext, setPrevious, setTotalPages]);
+  }, [
+    query,
+    setListPlayers,
+    currentPage,
+    setNext,
+    setPrevious,
+    totPages,
+    setCurrentPage,
+  ]);
 
   const handleDelete = async (id) => {
     setIsLoading(true);
