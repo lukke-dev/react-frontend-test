@@ -31,7 +31,7 @@ const NavBar = () => {
         Novo Jogador
       </S.Link>
       <S.Bar>|</S.Bar>
-      <S.Link to="/listplayers" exact>
+      <S.Link to="/listplayers/?page=1&limit=3" exact>
         Jogadores
       </S.Link>
       <S.Bar>|</S.Bar>

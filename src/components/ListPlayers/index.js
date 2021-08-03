@@ -93,12 +93,16 @@ const ListPlayers = () => {
       </S.Table>
       {listPlayers.length > 0 && (
         <S.BtnPage>
-          <Link to={`/listplayers/?page=${previous}&limit=${limit}`}>
-            <FaRegArrowAltCircleLeft size={36} color="#191716" />
-          </Link>
-          <Link to={`/listplayers/?page=${next}&limit=${limit}`}>
-            <FaRegArrowAltCircleRight size={36} color="#191716" />
-          </Link>
+          {currentPage !== '1' && (
+            <Link to={`/listplayers/?page=${previous}&limit=${limit}`}>
+              <FaRegArrowAltCircleLeft size={36} color="#191716" />
+            </Link>
+          )}
+          {currentPage < totPages && (
+            <Link to={`/listplayers/?page=${next}&limit=${limit}`}>
+              <FaRegArrowAltCircleRight size={36} color="#191716" />
+            </Link>
+          )}
         </S.BtnPage>
       )}
     </S.Wrapper>
