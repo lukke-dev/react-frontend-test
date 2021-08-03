@@ -52,7 +52,7 @@ const ListPlayers = () => {
     setIsLoading(true);
     await deletePlayer(id);
     toast.dark('Jogador deletado!');
-    history.push('./');
+    history.push('./?page=1&limit=3');
   };
   return (
     <S.Wrapper>
@@ -77,7 +77,7 @@ const ListPlayers = () => {
                   <FaEdit cursor="pointer" color="#191716" />
                 </Link>
                 <Link
-                  to="/listplayers/"
+                  to="/listplayers/?page=1&limit=3"
                   onClick={() => handleDelete(player._id)}
                 >
                   <FaWindowClose

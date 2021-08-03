@@ -23,7 +23,7 @@ const NewPlayer = () => {
     player = { playerName, playerCoins };
     const resp = await addPlayer(player);
     if (resp === 'error') return e;
-    history.push('./listplayers');
+    history.push('./listplayers/?page=1&limit=3');
     return e;
   };
   return (
