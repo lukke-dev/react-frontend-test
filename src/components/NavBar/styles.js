@@ -18,8 +18,8 @@ export const Wrapper = styled.div`
       align-items: flex-end;
       flex-direction: column;
       position: absolute;
-      width: 65%;
-      height: 60%;
+      width: 50%;
+      height: 100vh;
       top: 50px;
       right: 0px;
       background-color: #191716;
