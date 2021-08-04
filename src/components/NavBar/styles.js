@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
       flex-direction: column;
       position: absolute;
       width: 65%;
-      height: 45%;
+      height: 60%;
       top: 50px;
       right: 0px;
       background-color: #191716;
