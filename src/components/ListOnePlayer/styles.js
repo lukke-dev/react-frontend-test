@@ -4,9 +4,12 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1000px;
-  margin: 100px auto;
+  margin: 100px 180px;
   flex-direction: column;
+
+  @media (max-width: 600px) {
+    margin: 100px 30px;
+  }
 `;
 
 export const Table = styled.table`

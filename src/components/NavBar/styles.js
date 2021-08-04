@@ -1,14 +1,56 @@
 import { NavLink } from 'react-router-dom';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import styled from 'styled-components';
 
-export const Wrapper = styled.nav`
+export const Wrapper = styled.div`
+  background-color: #191716;
+  height: 50px;
+
+  @media (max-width: 600px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+
+    .active-menu {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      flex-direction: column;
+      position: absolute;
+      width: 65%;
+      height: 45%;
+      top: 50px;
+      right: 0px;
+      background-color: #191716;
+    }
+  }
+`;
+
+export const MenuMobile = styled(GiHamburgerMenu)`
+  cursor: pointer;
+  display: none;
+  color: #e0e2db;
+
+  &:hover {
+    color: #beb7a4;
+  }
+  @media (max-width: 600px) {
+    display: block;
+  }
+`;
+
+export const Nav = styled.nav`
   background-color: #191716;
   color: #e0e2db;
-  width: 100%;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const Link = styled(NavLink)`
@@ -21,11 +63,19 @@ export const Link = styled(NavLink)`
   &:hover {
     color: #e0e2db;
   }
+
+  @media (max-width: 600px) {
+    margin-top: 20px;
+  }
 `;
 
 export const Bar = styled.h2`
   color: #beb7a4;
   opacity: 0.3;
+
+  @media (max-width: 600px) {
+    color: #191716;
+  }
 `;
 
 export const Search = styled.input`
@@ -44,10 +94,22 @@ export const Search = styled.input`
   &:focus {
     width: 400px;
   }
+
+  @media (max-width: 600px) {
+    margin: 20px 20px 20px 0;
+
+    &:focus {
+      width: 200px;
+    }
+  }
 `;
 
 export const BtnSearch = styled.button`
   cursor: pointer;
   background-color: #191716;
   border: none;
+
+  @media (max-width: 600px) {
+    margin: 0 auto;
+  }
 `;

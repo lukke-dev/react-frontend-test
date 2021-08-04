@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   margin: 50px auto;
   height: 100%;
-  width: 600px;
   text-align: center;
   color: #191716;
   form {

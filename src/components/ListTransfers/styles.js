@@ -4,8 +4,11 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1000px;
-  margin: 100px auto;
+  margin: 100px 180px;
+
+  @media (max-width: 600px) {
+    margin: 100px 40px;
+  }
 `;
 
 export const Table = styled.table`
@@ -23,5 +26,16 @@ export const Table = styled.table`
 
   button {
     margin: 0 10px;
+  }
+
+  @media (max-width: 600px) {
+    line-height: 2rem;
+    th:nth-child(5) {
+      display: none;
+    }
+
+    td:nth-child(5) {
+      display: none;
+    }
   }
 `;

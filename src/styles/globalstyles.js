@@ -34,6 +34,7 @@ body {
     font-size: 1.7rem;
     color: #E0E2DB;
   }
+
 `;
 
 export default GlobalStyles;
