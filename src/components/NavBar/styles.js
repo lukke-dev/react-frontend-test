@@ -97,9 +97,10 @@ export const Search = styled.input`
 
   @media (max-width: 600px) {
     margin: 20px 20px 20px 0;
+    width: 120px;
 
     &:focus {
-      width: 200px;
+      width: 120px;
     }
   }
 `;
