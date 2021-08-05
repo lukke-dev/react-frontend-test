@@ -17,8 +17,8 @@ export const getPlayersByQuery = async (query) => {
 
 export const getByName = async (playerName) => {
   const name = playerName.replace('/listone', '');
-  if (playerName) return Axios.get(`${baseUrl}/name${name}`);
-  return 'error';
+
+  return Axios.get(`${baseUrl}/name${name}`).then((resp) => resp.data);
 };
 
 export const addPlayer = async (player) => {

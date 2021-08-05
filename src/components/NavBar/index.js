@@ -19,13 +19,13 @@ const NavBar = () => {
       return toast.error('Campo de pesquisa vazio');
     }
     const resp = await getByName(`/${value}`);
-    if (!resp.data) {
+    if (!resp) {
       setIsLoading(false);
       return toast.error('Jogador não existe');
     }
     setIsLoading(false);
     history.push('./');
-    return history.push(`/listone/${resp.data.playerName}`);
+    return history.push(`/listone/${resp.playerName}`);
   };
 
   const handleClick = () => {

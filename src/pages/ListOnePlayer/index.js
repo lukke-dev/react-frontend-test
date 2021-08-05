@@ -17,8 +17,8 @@ const ListOnePlayer = () => {
     const players = async () => {
       const resp = await getByName(name.pathname);
       if (player === '') {
-        if (resp.data.playerName) {
-          setPlayer(resp.data);
+        if (resp.playerName) {
+          setPlayer(resp);
         }
       }
       setIsLoading(false);

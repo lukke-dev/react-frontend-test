@@ -29,16 +29,18 @@ const NewPlayer = () => {
   const editPlayerDetails = async () => {
     player = { playerName, playerCoins };
     await editPlayer(id, player);
-    history.push('/listplayers');
-    toast.success('Nome do jogador alterado com sucesso');
+    toast.info('Nome do jogador alterado com sucesso');
+    history.push('/listplayers/?page=1&limit=3');
   };
   const getName = async (e) => {
     e.preventDefault();
     if (playerName === '') return toast.error('Nome do jogador vazio!');
-    const resp = await getByName(playerName);
-    if (resp.data.playerName)
-      return toast.error('Já existe um jogador com esse nome!');
-    return editPlayerDetails();
+    const resp = await getByName(`/${playerName}`);
+    if (!resp) {
+      return editPlayerDetails();
+    }
+
+    return toast.error('Já existe um jogador com esse nome!');
   };
 
   return (
