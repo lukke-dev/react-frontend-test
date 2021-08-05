@@ -15,7 +15,7 @@ const NewPlayer = () => {
   useEffect(() => {
     const loadPlayerData = async () => {
       const resp = await getPlayers(id);
-      setPlaceHolder(resp.data);
+      setPlaceHolder(resp);
     };
 
     loadPlayerData();
