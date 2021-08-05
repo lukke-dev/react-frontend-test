@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import * as S from './styles';
 import Loading from '../Loading';
 import { getByName } from '../../services/api';
+import SearchBar from '../SearchBar';
 
 const NavBar = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,6 +32,10 @@ const NavBar = () => {
     nav.classList.toggle('active-menu');
   };
 
+  const handleChange = (val) => {
+    setValue(val);
+  };
+
   return (
     <S.Wrapper>
       <S.MenuMobile onClick={handleClick} size={36} />
@@ -51,7 +56,7 @@ const NavBar = () => {
         <S.Link to="/listtransfers" exact onClick={handleClick}>
           Transferências
         </S.Link>
-        <S.Search type="search" onChange={(e) => setValue(e.target.value)} />
+        <SearchBar handleChange={handleChange} val={value} />
         <S.BtnSearch onClick={() => searchByName()}>
           <FaSearch size={16} color="#E0E2DB" onClick={handleClick} />
         </S.BtnSearch>
