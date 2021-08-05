@@ -5,13 +5,14 @@ import { toast } from 'react-toastify';
 const baseUrl = 'https://api-test-fullstack.herokuapp.com/players';
 
 export const getPlayers = async (id) => {
-  if (id) return Axios.get(`${baseUrl}/find/${id}`);
-  return Axios.get(`${baseUrl}/`);
+  if (id) return Axios.get(`${baseUrl}/find/${id}`).then((resp) => resp.data);
+  return Axios.get(`${baseUrl}/`).then((resp) => resp.data);
 };
 
 export const getPlayersByQuery = async (query) => {
-  if (!query) return Axios.get(`${baseUrl}/?page=1&limit=3`);
-  return Axios.get(`${baseUrl}/${query}`);
+  if (!query)
+    return Axios.get(`${baseUrl}/?page=1&limit=3`).then((resp) => resp.data);
+  return Axios.get(`${baseUrl}/${query}`).then((resp) => resp.data);
 };
 
 export const getByName = async (playerName) => {

@@ -25,28 +25,21 @@ const ListPlayers = () => {
   const query = useLocation();
   const history = useHistory();
   const limit = 3;
+
   useEffect(() => {
     const players = async () => {
+      setIsLoading(true);
       setCurrentPage(query.search.slice(6, 7));
       const resp = await getPlayersByQuery(query.search);
       const totItems = await getPlayers();
-      setTotPages(Math.ceil(totItems.data.length / limit));
-      setListPlayers(resp.data);
-      setIsLoading(false);
+      setTotPages(Math.ceil(totItems.length / limit));
+      setListPlayers(resp);
       if (currentPage > 1) setPrevious(Number(currentPage) - 1);
       if (currentPage < totPages) setNext(Number(currentPage) + 1);
+      setIsLoading(false);
     };
-
     players();
-  }, [
-    query,
-    setListPlayers,
-    currentPage,
-    setNext,
-    setPrevious,
-    totPages,
-    setCurrentPage,
-  ]);
+  }, [currentPage, query, totPages]);
 
   const handleDelete = async (id) => {
     setIsLoading(true);
