@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as S from './styles';
 import { getTransfers, deleteTranfer } from '../../services/api';
-import Loading from '../Loading';
+import Loading from '../../components/Loading';
 
 const ListTransfers = () => {
   const [listTransfers, setListTransfers] = useState([]);

@@ -2,13 +2,13 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import GlobalStyles from './styles/globalstyles';
 import NavBar from './components/NavBar';
-import NewPlayer from './components/NewPlayer';
-import EditPlayer from './components/EditPlayer';
-import ListPlayers from './components/ListPlayers';
-import NewTransfer from './components/NewTransfer';
-import ListTransfers from './components/ListTransfers';
-import ListOnePlayer from './components/ListOnePlayer';
-import Page404 from './components/Page404';
+import NewPlayer from './pages/NewPlayer';
+import EditPlayer from './pages/EditPlayer';
+import ListPlayers from './pages/ListPlayers';
+import NewTransfer from './pages/NewTransfer';
+import ListTransfers from './pages/ListTransfers';
+import ListOnePlayer from './pages/ListOnePlayer';
+import Page404 from './pages/Page404';
 
 function App() {
   return (

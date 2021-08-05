@@ -1,12 +1,10 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint no-underscore-dangle: 0 */
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { FaWindowClose, FaEdit } from 'react-icons/fa';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import * as S from './styles';
-import Loading from '../Loading';
+import Loading from '../../components/Loading';
 import { deletePlayer, getByName } from '../../services/api';
 
 const ListOnePlayer = () => {

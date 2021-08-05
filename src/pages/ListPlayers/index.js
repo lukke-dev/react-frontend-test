@@ -8,7 +8,7 @@ import {
 } from 'react-icons/fa';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import * as S from './styles';
-import Loading from '../Loading';
+import Loading from '../../components/Loading';
 import {
   getPlayersByQuery,
   deletePlayer,

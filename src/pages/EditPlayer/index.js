@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { editPlayer, getPlayers, getByName } from '../../services/api';
-import Loading from '../Loading';
+import Loading from '../../components/Loading';
 import * as S from './styles';
 
 const NewPlayer = () => {

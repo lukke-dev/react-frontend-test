@@ -24,6 +24,7 @@ const NavBar = () => {
       return toast.error('Jogador não existe');
     }
     setIsLoading(false);
+    history.push('./');
     return history.push(`/listone/${resp.data.playerName}`);
   };
 

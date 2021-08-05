@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { addPlayer } from '../../services/api';
