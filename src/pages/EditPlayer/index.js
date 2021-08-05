@@ -30,6 +30,7 @@ const NewPlayer = () => {
     player = { playerName, playerCoins };
     await editPlayer(id, player);
     history.push('/listplayers');
+    toast.success('Nome do jogador alterado com sucesso');
   };
   const getName = async (e) => {
     e.preventDefault();
